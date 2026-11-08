@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "qa-feature-flow": {
+      "source": {
+        "source": "github",
+        "repo": "ko-andreiev/qa-feature-flow"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "qa-feature-flow@qa-feature-flow": true
+  }
+}

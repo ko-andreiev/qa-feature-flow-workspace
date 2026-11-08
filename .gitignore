@@ -1,0 +1,12 @@
+# Product repositories: cloned here, never committed to this workspace
+repos/*
+!repos/README.md
+
+# Credentials (QA accounts, tokens). Setup records only file and variable names.
+.env
+*.env
+.env.*
+
+# Tool output and exports written by the method
+qa-work/.tool-output/
+qa-work/tms-export/
