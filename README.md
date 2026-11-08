@@ -38,8 +38,9 @@ Details in [`repos/README.md`](repos/README.md). Then edit [`CLAUDE.md`](CLAUDE.
 it, the language of artifacts.
 
 **3. Open the folder in Claude Code and trust it.** `.claude/settings.json` names the plugin's marketplace
-(`ko-andreiev/qa-feature-flow` on GitHub) and enables the plugin, so Claude Code offers to install it when you trust
-the folder. If it does not, install it yourself in the session:
+(`ko-andreiev/qa-feature-flow` on GitHub) and enables the plugin, so when you trust the folder Claude Code adds the
+marketplace and loads the plugin by itself, without asking. Check it: type `/qa-feature-flow` and the command
+`/qa-feature-flow:qa-feature-flow` shows up. If it does not, install it yourself in the session:
 
 ```
 /plugin marketplace add ko-andreiev/qa-feature-flow
@@ -83,7 +84,9 @@ claude plugin marketplace update qa-feature-flow
 claude plugin update qa-feature-flow@qa-feature-flow --scope project
 ```
 
-Then restart Claude Code in this folder. `/qa-feature-flow:qa-feature-flow setup check` compares your
+If the plugin was loaded automatically in step 3, the update answers "Plugin is not installed": register it once with
+`claude plugin install qa-feature-flow@qa-feature-flow --scope project` (this leaves `.claude/settings.json`
+unchanged), and the update works from then on. Then restart Claude Code in this folder. `/qa-feature-flow:qa-feature-flow setup check` compares your
 `feature-flow.toml` with the current config contract and lists keys a newer version added.
 
 ## Other agents
