@@ -9,6 +9,7 @@ Clone it, put your product repositories inside, start Claude Code, answer the se
 ```
 .
 ├── .claude/settings.json   enables the qa-feature-flow plugin for this folder
+├── .mcp.json               offers the Playwright browser for live checks of web pages (you approve it at first start)
 ├── AGENTS.md               tells any agent what to do here: state at start, commands, rules (no editing needed)
 ├── CLAUDE.md               imports AGENTS.md for Claude Code
 ├── repos/                  your product repositories (gitignored, read-only for the agent)
@@ -47,6 +48,14 @@ marketplace and loads the plugin by itself, without asking. Check it: type `/qa-
 /plugin marketplace add ko-andreiev/qa-feature-flow
 /plugin install qa-feature-flow@qa-feature-flow
 ```
+
+**Approve the `playwright` browser when Claude Code asks.** `.mcp.json` offers it as a project MCP server, so the
+first time you open the folder Claude Code asks whether to use it: approve it. Phase 5 (live verification) clicks
+through your web pages with it, including the browser's own `alert` / `confirm` / `prompt` dialogs. Without a browser
+tool setup writes `channels.web.tool = "none"` and every case that happens on a web page becomes a manual card for
+you. It needs Node.js (`npx`); it uses your installed Google Chrome, headless (delete `--headless` in `.mcp.json` to
+watch it). Check it with `/mcp`: `playwright` shows as connected. If you skipped the question, run `/mcp` and enable it
+there, then restart Claude Code.
 
 **4. Run setup and answer the interview** (5–10 minutes):
 
