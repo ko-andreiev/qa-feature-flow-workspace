@@ -9,7 +9,8 @@ Clone it, put your product repositories inside, start Claude Code, answer the se
 ```
 .
 ├── .claude/settings.json   enables the qa-feature-flow plugin for this folder
-├── CLAUDE.md               your project's instructions for the agent (edit it)
+├── AGENTS.md               tells any agent what to do here: state at start, commands, rules (no editing needed)
+├── CLAUDE.md               imports AGENTS.md for Claude Code
 ├── repos/                  your product repositories (gitignored, read-only for the agent)
 └── qa-work/                QA artifacts: notes, test cases, run journals (committed here)
 ```
@@ -34,8 +35,8 @@ git clone https://github.com/your-org/backend.git repos/backend
 git clone https://github.com/your-org/frontend.git repos/frontend
 ```
 
-Details in [`repos/README.md`](repos/README.md). Then edit [`CLAUDE.md`](CLAUDE.md): product name, one sentence about
-it, the language of artifacts.
+Details in [`repos/README.md`](repos/README.md). There is nothing to fill in by hand: the product name, the language
+and the rest come from the setup interview in step 4 and live in `feature-flow.toml`.
 
 **3. Open the folder in Claude Code and trust it.** `.claude/settings.json` names the plugin's marketplace
 (`ko-andreiev/qa-feature-flow` on GitHub) and enables the plugin, so when you trust the folder Claude Code adds the
@@ -91,8 +92,11 @@ unchanged), and the update works from then on. Then restart Claude Code in this 
 
 ## Other agents
 
-The method is also an [Agent Skill](https://agentskills.io/specification) that other agents with a shell can run,
-with the gates run by hand instead of hooks. See
+The method is also an [Agent Skill](https://agentskills.io/specification) that other agents with a shell can run.
+[`AGENTS.md`](AGENTS.md) is the one instruction file for all of them (Codex and Cursor read it directly, Claude Code
+through `CLAUDE.md`): at the start of a session the agent tells you whether the workspace is set up and which runs are
+unfinished, and it maps "test feature X", "continue" or "status" to the right command. Codex and Cursor need the skill
+installed first, per the adapter READMEs in the package. See
 [“Use in other agents”](https://github.com/ko-andreiev/qa-feature-flow#use-in-other-agents) in the package README.
 
 ## Licence
